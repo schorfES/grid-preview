@@ -1,6 +1,6 @@
 {
   "name": "grid-preview",
-  "description": " to preview customizable responsive grid layouts",
+  "description": "A webapp to preview customizable responsive grid layouts.",
   "version": "0.1.0",
   "repository": {
     "type": "git",
