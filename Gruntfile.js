@@ -5,7 +5,8 @@ module.exports = function(grunt) {
 
 		jshint: {
 			all: [
-				'Gruntfile.js'
+				'Gruntfile.js',
+				'src/js/src/**/*.js'
 			],
 			options: {
 				'boss': true,
@@ -14,10 +15,9 @@ module.exports = function(grunt) {
 				'eqnull': true,
 				'expr': true,
 				'globals': {
-					'module': true,
+					'define': true,
 					'require': true,
-					'exports': true,
-					'__dirname': true,
+					'module': true,
 					'window': true
 				},
 				'immed': true,
@@ -31,11 +31,70 @@ module.exports = function(grunt) {
 			}
 		},
 
+		requirejs: {
+			compile: {
+				options: {
+					baseUrl: '.',
+					appDir: 'src/js/src/', /* source dir */
+					dir: 'bin/js/', /* output dir */
+					modules: [
+						{
+							name: 'application'
+						}
+					],
+					paths: {
+						jquery: '../libs/jquery/jquery',
+						underscore: '../libs/underscore/underscore',
+						backbone: '../libs/backbone/backbone',
+						wreqr: '../libs/backbone/backbone.wreqr',
+						marionette: '../libs/backbone/backbone.marionette',
+						geppetto: '../libs/backbone/backbone.geppetto',
+						text: '../libs/require/require.text'
+					},
+					shim: {
+						jquery: {
+							exports: '$'
+						},
+						underscore: {
+							exports: '_'
+						},
+						backbone: {
+							deps: ['underscore', 'jquery'],
+							exports: 'Backbone'
+						},
+						wreqr: {
+							deps: ['backbone'],
+							exports: 'Backbone.Wreqr'
+						},
+						marionette: {
+							deps: ['wreqr'],
+							exports: 'Backbone.Marionette'
+						},
+						geppetto: {
+							deps: ['marionette'],
+							exports: 'Backbone.Geppetto'
+						}
+					},
+					almond: true, /* simple AMD loader for build files */
+					wrap: true, /* to use with the almond option */
+					preserveLicenseComments: false,
+					logLevel: 1
+				}
+			}
+		},
+
 		connect: {
-			server: {
+			dev: {
 				options: {
 					port: 8000,
-					base: '.',
+					base: 'src',
+					keepalive: true
+				}
+			},
+			prod: {
+				options: {
+					port: 8000,
+					base: 'bin',
 					keepalive: true
 				}
 			}
@@ -45,20 +104,29 @@ module.exports = function(grunt) {
 			build: {
 				files: [
 					{
-						expand: true,
-						src: [
-							'index.html'
-						],
-						dest: 'gh-pages/'
+						src: 'src/index.html',
+						dest: 'bin/index.html'
 					}
 				]
 			}
 		},
 
+		clean: {
+			options: {
+				force: true /* delete files outside of current directory */
+			},
+			build: [
+				'bin/js/core/',
+				'bin/js/grid-preview/',
+				'bin/js/build.txt'
+			]
+		},
+
 		lintspaces: {
 			all: {
 				src: [
-					'Gruntfile.js'
+					'Gruntfile.js',
+					'src/js/src/**/*.js'
 				],
 				options: {
 					newline: true,
@@ -70,10 +138,13 @@ module.exports = function(grunt) {
 	});
 
 	// load tasks
-	grunt.loadTasks('tasks');
+	/* grunt.loadNpmTasks('grunt-contrib-requirejs'); this contrib of
+	* grunt-require.js doesn't support almond.js in build files. */
+	grunt.loadNpmTasks('grunt-requirejs');
 	grunt.loadNpmTasks('grunt-contrib-jshint');
 	grunt.loadNpmTasks('grunt-contrib-connect');
 	grunt.loadNpmTasks('grunt-contrib-copy');
+	grunt.loadNpmTasks('grunt-contrib-clean');
 	grunt.loadNpmTasks('grunt-lintspaces');
 
 	// define tasks
@@ -83,7 +154,9 @@ module.exports = function(grunt) {
 	]);
 
 	grunt.registerTask('build', [
-		'copy:build'
+		'copy:build',
+		'requirejs',
+		'clean:build'
 	]);
 
 	grunt.registerTask('default', [
