@@ -1,0 +1,1 @@
+define(["require","geppetto","application/commands/ApplicationStartup"],function(e){var t=e("geppetto"),n=e("application/commands/ApplicationStartup");return t.Context.extend({initialize:function(){this.mapCommand("application:start",n)}})});

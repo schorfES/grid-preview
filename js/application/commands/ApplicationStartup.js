@@ -1,0 +1,1 @@
+define([],function(){var e=function(){};return e.prototype.execute=function(){window.alert("Start up")},e});
