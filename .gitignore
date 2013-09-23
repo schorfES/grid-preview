@@ -1,2 +1,5 @@
-gh-pages/
+bin/
+src/css/
 node_modules/
+
+.DS_Store
