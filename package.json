@@ -1,0 +1,26 @@
+{
+  "name": "grid-preview",
+  "description": " to preview customizable responsive grid layouts",
+  "version": "0.1.0",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/schorfES/grid-preview"
+  },
+  "author": "Norman Rusch (nrmnrsh / schorfES)",
+  "readmeFilename": "README.md",
+  "main": "Gruntfile.js",
+  "licenses": [
+    {
+      "type": "MIT",
+      "url": "https://github.com/schorfES/grid-preview/blob/master/LICENSE"
+    }
+  ],
+  "devDependencies": {
+    "grunt": "~0.4.1",
+    "grunt-contrib-jshint": "~0.4.3",
+    "grunt-lintspaces": "~0.2.202",
+    "grunt-contrib-connect": "~0.5.0",
+    "grunt-contrib-copy": "~0.4.1"
+  },
+  "keywords": []
+}
