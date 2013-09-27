@@ -121,7 +121,7 @@ module.exports = function(grunt) {
 			},
 			build: [
 				'bin/js/core/',
-				'bin/js/grid-preview/',
+				'bin/js/application/',
 				'bin/js/build.txt'
 			]
 		},
