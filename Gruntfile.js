@@ -1,7 +1,11 @@
 module.exports = function(grunt) {
+	var
+		pkg = grunt.file.readJSON('package.json')
+	;
+
 	// project configuration
 	grunt.initConfig({
-		pkg: grunt.file.readJSON('package.json'),
+		pkg: pkg,
 
 		jshint: {
 			all: [
@@ -134,6 +138,16 @@ module.exports = function(grunt) {
 					indentation: 'tabs'
 				}
 			}
+		},
+
+		gitclone: {
+			ghpages: {
+				options: {
+					repository: pkg.repository.url,
+					branch: 'gh-pages',
+					directory: 'bin'
+				}
+			}
 		}
 	});
 
@@ -146,8 +160,13 @@ module.exports = function(grunt) {
 	grunt.loadNpmTasks('grunt-contrib-copy');
 	grunt.loadNpmTasks('grunt-contrib-clean');
 	grunt.loadNpmTasks('grunt-lintspaces');
+	grunt.loadNpmTasks('grunt-git');
 
 	// define tasks
+	grunt.registerTask('init', [
+		'gitclone'
+	]);
+
 	grunt.registerTask('validate', [
 		'jshint',
 		'lintspaces'
