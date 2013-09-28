@@ -51,6 +51,7 @@ module.exports = function(grunt) {
 						underscore: '../libs/underscore/underscore',
 						backbone: '../libs/backbone/backbone',
 						wreqr: '../libs/backbone/backbone.wreqr',
+						babysitter: '../libs/backbone/backbone.babysitter',
 						marionette: '../libs/backbone/backbone.marionette',
 						geppetto: '../libs/backbone/backbone.geppetto',
 						text: '../libs/require/require.text'
@@ -161,6 +162,12 @@ module.exports = function(grunt) {
 			}
 		},
 
+		exec: {
+			build: {
+				command: 'compass compile -c configBuild.rb'
+			}
+		},
+
 		gitclone: {
 			ghpages: {
 				options: {
@@ -182,6 +189,7 @@ module.exports = function(grunt) {
 	grunt.loadNpmTasks('grunt-contrib-clean');
 	grunt.loadNpmTasks('grunt-string-replace');
 	grunt.loadNpmTasks('grunt-lintspaces');
+	grunt.loadNpmTasks('grunt-exec');
 	grunt.loadNpmTasks('grunt-git');
 
 	// define tasks
@@ -197,6 +205,7 @@ module.exports = function(grunt) {
 	grunt.registerTask('build', [
 		'copy:build',
 		'requirejs:build',
+		'exec:build',
 		'clean:build',
 		'string-replace:build'
 	]);
