@@ -3,7 +3,6 @@ define(function(require) {
 		$ = require('jquery'),
 		_ = require('underscore'),
 		Backbone = require('backbone'),
-		Marionette = require('marionette'),
 		Template = require('text!application/views/grid/Template.html'),
 		GridColumnView = require('application/views/grid/GridColumn'),
 
@@ -44,6 +43,13 @@ define(function(require) {
 			if(newSettings.columns !== this.settings.columns || force) {
 				this.clear();
 				this.createColumns(newSettings);
+			} else if( newSettings.padding !== this.settings.padding || newSettings.paddingUnit !== this.settings.paddingUnit) {
+				_.each(this.columnViews, function(view) {
+					view.applyStyles({
+						padding: newSettings.padding,
+						paddingUnit: newSettings.paddingUnit
+					});
+				});
 			}
 
 			this.settings = newSettings;

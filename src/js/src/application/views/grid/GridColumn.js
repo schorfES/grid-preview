@@ -11,18 +11,20 @@ define(function(require) {
 		template: _.template(Template),
 
 		render: function() {
-			var
-				styles = this.options.styles
-			;
+			this.$content = $(this.template()).appendTo(this.$el);
+			this.applyStyles(this.options.styles);
 
-			this.$content = $(this.template());
+			return this;
+		},
+
+		applyStyles: function(styles) {
+			this.options.styles = styles;
 			this.$content
 				.css({
 					width: styles.width + styles.widthUnit,
 					paddingLeft: styles.padding + styles.paddingUnit,
 					paddingRight: styles.padding + styles.paddingUnit
-				})
-				.appendTo(this.$el);
+				});
 
 			return this;
 		}
