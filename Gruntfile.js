@@ -130,7 +130,8 @@ module.exports = function(grunt) {
 			all: {
 				src: [
 					'Gruntfile.js',
-					'src/js/src/**/*.js'
+					'src/js/src/**/*',
+					'src/scss/**/*'
 				],
 				options: {
 					newline: true,
