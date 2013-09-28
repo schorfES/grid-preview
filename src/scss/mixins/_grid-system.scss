@@ -1,0 +1,43 @@
+@import "compass/utilities";
+
+$grid-max: 960px;
+$grid-columns: 12;
+$grid-gutter: 10px;
+
+@mixin grid-container() {
+	@include pie-clearfix();
+	display: block;
+	margin: 0 auto;
+	width: 100%;
+	max-width: $grid-max;
+}
+
+@mixin grid($columns, $gutter: $grid-gutter) {
+	@include box-sizing(border-box);
+	display: block;
+	float: left;
+	margin: 0;
+	padding: 0 $gutter;
+	width: (100%/$grid-columns) * $columns;
+}
+
+@mixin grid-alpha() {
+	padding-left: 0;
+}
+
+@mixin grid-omega() {
+	padding-right: 0;
+}
+
+@mixin grid-break($min, $max: 0) {
+
+	@if($max > $min) {
+		@media screen and (min-width: $min) and (max-width: $max) {
+			@content;
+		}
+	} @else {
+		@media screen and (min-width: $min) {
+			@content;
+		}
+	}
+}
