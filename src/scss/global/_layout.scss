@@ -9,5 +9,10 @@ body,
 }
 
 body {
-	background: $color-background;
+	background-image: url("../img/backgrounds/app.png");
+
+	@include retina() {
+		background-image: url("../img/backgrounds/app-retina.png");
+		background-size: image-width("../img/backgrounds/app.png") auto;
+	}
 }
