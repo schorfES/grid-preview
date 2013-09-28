@@ -1,0 +1,34 @@
+<div class="config">
+	<fieldset>
+		<legend>Columns</legend>
+
+		<label for="columns">
+			<span>Amount:</span>
+			<input type="number" name="columns" value="<%= columns %>" />
+		</label>
+
+		<label for="widthMax">
+			<span>Max Width</span>
+			<input type="number" name="widthMax" value="<%= widthMax %>" />
+
+			<select name="gutterUnit">
+				<option value="%" <%= (widthMaxUnit === '%') ? 'selected' : '' %>>%</option>
+				<option value="px" <%= (widthMaxUnit === 'px') ? 'selected' : '' %>>px</option>
+			</select>
+		</label>
+	</fieldset>
+
+	<fieldset>
+		<legend>Gutter</legend>
+
+		<label for="gutter">
+			<span>Width:</span>
+			<input type="number" name="gutter" value="<%= gutter %>" />
+
+			<select name="gutterUnit">
+				<option value="%" <%= (gutterUnit === '%') ? 'selected' : '' %>>%</option>
+				<option value="px" <%= (gutterUnit === 'px') ? 'selected' : '' %>>px</option>
+			</select>
+		</label>
+	</fieldset>
+</div>

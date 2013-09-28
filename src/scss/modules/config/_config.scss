@@ -1,0 +1,26 @@
+.config {
+	fieldset {
+		@include grid(6);
+	}
+
+	label {
+		display: block;
+	}
+}
+
+@include grid-break(400px) {
+	.config {
+		fieldset {
+			@include grid(3);
+		}
+	}
+}
+
+
+@include grid-break(700px) {
+	.config {
+		fieldset {
+			@include grid(2);
+		}
+	}
+}

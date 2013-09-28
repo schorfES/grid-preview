@@ -21,17 +21,12 @@
 	.title {
 		@include icon(eye);
 		@include grid(6);
-		position: relative;
-		overflow: hidden;
-		font-size: 2em;
-		text-indent: -999px;
+		font-size: 1em;
 		text-decoration: none;
 
 		&:before {
-			position: absolute;
-			text-indent: 0;
-			top: 0;
-			left: $grid-gutter;
+			margin: -2px 0 0 0;
+			font-size: 1.5em;
 		}
 	}
 }

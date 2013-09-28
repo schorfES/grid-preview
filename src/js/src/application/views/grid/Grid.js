@@ -4,14 +4,7 @@ define(function(require) {
 		_ = require('underscore'),
 		Backbone = require('backbone'),
 		Template = require('text!application/views/grid/Template.html'),
-		GridColumnView = require('application/views/grid/GridColumn'),
-
-		defaults = {
-			columns: 12,
-			widthUnit: '%',
-			padding: 10,
-			paddingUnit: 'px'
-		}
+		GridColumnView = require('application/views/grid/GridColumn')
 	;
 
 	return Backbone.View.extend({
@@ -19,8 +12,7 @@ define(function(require) {
 		template: _.template(Template),
 
 		initialize: function(options) {
-			options.settings = options.settings || {};
-			this.settings = $.extend({}, defaults, options.settings);
+			this.settings = options.settings || {};
 		},
 
 		render: function() {
@@ -40,14 +32,20 @@ define(function(require) {
 		apply: function(settings, force) {
 			var newSettings = $.extend({}, this.settings, settings);
 
+			if(newSettings.widthMax !== this.settings.widthMax || newSettings.widthMaxUnit !== this.settings.widthUnit || force) {
+				this.$content.css({
+					maxWidth: newSettings.widthMax + newSettings.widthMaxUnit
+				});
+			}
+
 			if(newSettings.columns !== this.settings.columns || force) {
 				this.clear();
 				this.createColumns(newSettings);
-			} else if( newSettings.padding !== this.settings.padding || newSettings.paddingUnit !== this.settings.paddingUnit) {
+			} else if( newSettings.gutter !== this.settings.gutter || newSettings.gutterUnit !== this.settings.gutterUnit) {
 				_.each(this.columnViews, function(view) {
 					view.applyStyles({
-						padding: newSettings.padding,
-						paddingUnit: newSettings.paddingUnit
+						gutter: newSettings.gutter,
+						gutterUnit: newSettings.gutterUnit
 					});
 				});
 			}
@@ -60,8 +58,8 @@ define(function(require) {
 				styles = {
 					width: 1/settings.columns * 100,
 					widthUnit: settings.widthUnit,
-					padding: settings.padding,
-					paddingUnit: settings.paddingUnit
+					gutter: settings.gutter,
+					gutterUnit: settings.gutterUnit
 				},
 				view,
 				index
