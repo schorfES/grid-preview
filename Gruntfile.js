@@ -70,8 +70,12 @@ module.exports = function(grunt) {
 							deps: ['backbone'],
 							exports: 'Backbone.Wreqr'
 						},
+						babysitter: {
+							deps: ['backbone'],
+							exports: 'Backbone.BabySitter'
+						},
 						marionette: {
-							deps: ['wreqr'],
+							deps: ['wreqr', 'babysitter'],
 							exports: 'Backbone.Marionette'
 						},
 						geppetto: {
