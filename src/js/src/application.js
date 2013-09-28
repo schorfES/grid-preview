@@ -6,6 +6,7 @@
 			underscore: '../libs/underscore/underscore',
 			backbone: '../libs/backbone/backbone',
 			wreqr: '../libs/backbone/backbone.wreqr',
+			babysitter: '../libs/backbone/backbone.babysitter',
 			marionette: '../libs/backbone/backbone.marionette',
 			geppetto: '../libs/backbone/backbone.geppetto',
 			text: '../libs/require/require.text'
@@ -26,8 +27,12 @@
 				deps: ['backbone'],
 				exports: 'Backbone.Wreqr'
 			},
+			babysitter: {
+				deps: ['backbone'],
+				exports: 'Backbone.BabySitter'
+			},
 			marionette: {
-				deps: ['wreqr'],
+				deps: ['wreqr', 'babysitter'],
 				exports: 'Backbone.Marionette'
 			},
 			geppetto: {
@@ -56,6 +61,9 @@
 		});
 
 		app.start();
+
+		//Add to global
+		window.gridPreview = app;
 	}
 
 })(window, require);
