@@ -36,7 +36,7 @@ module.exports = function(grunt) {
 		},
 
 		requirejs: {
-			compile: {
+			build: {
 				options: {
 					baseUrl: '.',
 					appDir: 'src/js/src/', /* source dir */
@@ -126,6 +126,22 @@ module.exports = function(grunt) {
 			]
 		},
 
+		'string-replace': {
+			build: {
+				files: {
+					'bin/index.html': 'bin/index.html'
+				},
+				options: {
+					replacements: [
+						{
+							pattern: 'data-main="js/src/application" src="js/libs/require/require.js"',
+							replacement: 'src="js/application.js"'
+						}
+					]
+				}
+			}
+		},
+
 		lintspaces: {
 			all: {
 				src: [
@@ -160,6 +176,7 @@ module.exports = function(grunt) {
 	grunt.loadNpmTasks('grunt-contrib-connect');
 	grunt.loadNpmTasks('grunt-contrib-copy');
 	grunt.loadNpmTasks('grunt-contrib-clean');
+	grunt.loadNpmTasks('grunt-string-replace');
 	grunt.loadNpmTasks('grunt-lintspaces');
 	grunt.loadNpmTasks('grunt-git');
 
@@ -175,8 +192,9 @@ module.exports = function(grunt) {
 
 	grunt.registerTask('build', [
 		'copy:build',
-		'requirejs',
-		'clean:build'
+		'requirejs:build',
+		'clean:build',
+		'string-replace:build'
 	]);
 
 	grunt.registerTask('default', [
