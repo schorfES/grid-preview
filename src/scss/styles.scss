@@ -3,7 +3,10 @@
 @import "compass/css3/";
 
 @import "mixins/grid-system";
+@import "mixins/icons";
 
+@import "global/variables";
+@import "global/fonts";
 @import "global/layout";
 @import "global/typography";
 

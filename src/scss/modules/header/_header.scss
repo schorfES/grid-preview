@@ -1,7 +1,5 @@
-$color-header-background: #161712;
-$color-header-border: #000000;
-
 .header {
+	@include transition(top 1s);
 	position: fixed;
 	top: 0;
 	left: 0;
@@ -12,7 +10,28 @@ $color-header-border: #000000;
 	border-bottom: 1px solid $color-header-border;
 	border-bottom: 1px solid rgba($color-header-border, 0.2);
 
+	&.collapsed {
+		top: -100%;
+	}
+
 	.content {
 		@include grid-container();
+	}
+
+	.title {
+		@include icon(eye);
+		@include grid(6);
+		position: relative;
+		overflow: hidden;
+		font-size: 2em;
+		text-indent: -999px;
+		text-decoration: none;
+
+		&:before {
+			position: absolute;
+			text-indent: 0;
+			top: 0;
+			left: $grid-gutter;
+		}
 	}
 }
