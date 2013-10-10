@@ -15,7 +15,8 @@ define(function(require) {
 		render: function() {
 			this.$content = $(this.template(this.options.settings)).appendTo(this.$el);
 			this.$content.find('select').uniform({
-				selectClass: 'select'
+				selectClass: 'select',
+				selectAutoWidth: false
 			});
 			return this;
 		}

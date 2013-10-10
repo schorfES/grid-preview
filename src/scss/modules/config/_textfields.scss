@@ -1,0 +1,18 @@
+.config {
+	input[type="text"],
+	input[type="number"] {
+		@include border-radius(3px);
+		display: block;
+		margin: 0;
+		padding: 0;
+		width: 100%;
+		color: $color-forms-text;
+		text-align: center;
+		background-color: $color-forms-background;
+		border: 1px solid $color-forms-text;
+
+		&::-webkit-inner-spin-button {
+			display: none;
+		}
+	}
+}

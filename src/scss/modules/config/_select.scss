@@ -1,0 +1,33 @@
+.config {
+	.select {
+		@include inline-block();
+		@include border-radius(3px);
+		position: absolute;
+		top: 1px;
+		right: 0;
+		padding: 0 25px 0 0;
+		width: 45px;
+		color: $color-forms-text;
+
+
+		span {
+			@include icon(down-dir);
+			display: block;
+			text-align: center;
+
+			&:before {
+				position: absolute;
+				right: 3px;
+			}
+		}
+
+		select {
+			@include opacity(0.0);
+			position: absolute;
+			top: 0;
+			left: 0;
+			width: 100%;
+			height: 100%;
+		}
+	}
+}

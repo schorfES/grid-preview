@@ -3,18 +3,21 @@
 		<legend>Columns</legend>
 
 		<label for="columns">
-			<span>Amount:</span>
-			<input type="number" name="columns" value="<%= columns %>" />
+			<span class="label">Amount:</span>
+			<div class="input">
+				<input type="number" name="columns" value="<%= columns %>" />
+			</div>
 		</label>
 
 		<label for="widthMax">
-			<span>Max Width</span>
-			<input type="number" name="widthMax" value="<%= widthMax %>" />
-
-			<select name="gutterUnit">
-				<option value="%" <%= (widthMaxUnit === '%') ? 'selected' : '' %>>%</option>
-				<option value="px" <%= (widthMaxUnit === 'px') ? 'selected' : '' %>>px</option>
-			</select>
+			<span class="label">Max Width</span>
+			<div class="input">
+				<input type="number" name="widthMax" value="<%= widthMax %>" />
+				<select name="gutterUnit">
+					<option value="%" <%= (widthMaxUnit === '%') ? 'selected' : '' %>>%</option>
+					<option value="px" <%= (widthMaxUnit === 'px') ? 'selected' : '' %>>px</option>
+				</select>
+			</div>
 		</label>
 	</fieldset>
 
@@ -22,13 +25,15 @@
 		<legend>Gutter</legend>
 
 		<label for="gutter">
-			<span>Width:</span>
-			<input type="number" name="gutter" value="<%= gutter %>" />
+			<span class="label">Width:</span>
 
-			<select name="gutterUnit">
-				<option value="%" <%= (gutterUnit === '%') ? 'selected' : '' %>>%</option>
-				<option value="px" <%= (gutterUnit === 'px') ? 'selected' : '' %>>px</option>
-			</select>
+			<div class="input">
+				<input type="number" name="gutter" value="<%= gutter %>" />
+				<select name="gutterUnit">
+					<option value="%" <%= (gutterUnit === '%') ? 'selected' : '' %>>%</option>
+					<option value="px" <%= (gutterUnit === 'px') ? 'selected' : '' %>>px</option>
+				</select>
+			</div>
 		</label>
 	</fieldset>
 </div>

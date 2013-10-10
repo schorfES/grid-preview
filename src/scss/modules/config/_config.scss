@@ -3,8 +3,34 @@
 		@include grid(6);
 	}
 
+	legend {
+		margin: 0 0 0.25em 0;
+	}
+
 	label {
+		@include pie-clearfix();
+		@include border-radius(3px);
 		display: block;
+		margin: 0 0 0.25em 0;
+		padding: 3px;
+		color: $color-forms-text;
+		background-color: $color-forms-background;
+	}
+
+	.label,
+	.input {
+		float: left;
+		display: block;
+		width: 50%;
+	}
+
+	.label {
+		padding: 2px;
+	}
+
+	.input {
+		position: relative;
+		padding-right: 50px;
 	}
 }
 
