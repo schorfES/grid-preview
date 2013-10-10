@@ -11,8 +11,8 @@ define(function(require) {
 			widthUnit: '%',
 			widthMax: 960,
 			widthMaxUnit: 'px',
-			gutter: 2.4,
-			gutterUnit: '%'
+			gutterWidth: 2.4,
+			gutterWidthUnit: '%'
 		}
 	});
 

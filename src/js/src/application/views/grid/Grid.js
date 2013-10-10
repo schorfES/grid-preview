@@ -40,12 +40,12 @@ define(function(require) {
 
 			if(newSettings.columns !== this.settings.columns || force) {
 				this.clear();
-				this.createColumns(newSettings);
+				this._createColumns(newSettings);
 			} else if( newSettings.gutter !== this.settings.gutter || newSettings.gutterUnit !== this.settings.gutterUnit) {
 				_.each(this.columnViews, function(view) {
 					view.applyStyles({
-						gutter: newSettings.gutter,
-						gutterUnit: newSettings.gutterUnit
+						gutter: newSettings.gutterWidth,
+						gutterUnit: newSettings.gutterWidthUnit
 					});
 				});
 			}
@@ -53,13 +53,13 @@ define(function(require) {
 			this.settings = newSettings;
 		},
 
-		createColumns: function(settings) {
+		_createColumns: function(settings) {
 			var
 				styles = {
 					width: 1/settings.columns * 100,
 					widthUnit: settings.widthUnit,
-					gutter: settings.gutter,
-					gutterUnit: settings.gutterUnit
+					gutterWidth: settings.gutterWidth,
+					gutterWidthUnit: settings.gutterWidthUnit
 				},
 				view,
 				index
