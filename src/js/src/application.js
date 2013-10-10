@@ -3,6 +3,7 @@
 	require.config({
 		paths: {
 			jquery: '../libs/jquery/jquery',
+			ui: '../libs/jquery/jquery.ui.custom',
 			uniform: '../libs/jquery/jquery.uniform',
 			underscore: '../libs/underscore/underscore',
 			backbone: '../libs/backbone/backbone',
@@ -16,6 +17,10 @@
 		shim: {
 			jquery: {
 				exports: '$'
+			},
+			ui: {
+				deps: ['jquery'],
+				exports: '$.fn.ui'
 			},
 			uniform: {
 				deps: ['jquery'],

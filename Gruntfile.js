@@ -48,6 +48,8 @@ module.exports = function(grunt) {
 					],
 					paths: {
 						jquery: '../libs/jquery/jquery',
+						ui: '../libs/jquery/jquery.ui.custom',
+						uniform: '../libs/jquery/jquery.uniform',
 						underscore: '../libs/underscore/underscore',
 						backbone: '../libs/backbone/backbone',
 						wreqr: '../libs/backbone/backbone.wreqr',
@@ -59,6 +61,14 @@ module.exports = function(grunt) {
 					shim: {
 						jquery: {
 							exports: '$'
+						},
+						ui: {
+							deps: ['jquery'],
+							exports: '$.fn.ui'
+						},
+						uniform: {
+							deps: ['jquery'],
+							exports: '$.fn.uniform'
 						},
 						underscore: {
 							exports: '_'
