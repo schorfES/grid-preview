@@ -5,10 +5,8 @@
 		position: absolute;
 		top: 1px;
 		right: 0;
-		padding: 0 25px 0 0;
+		padding: 0 1em 0 0;
 		width: 45px;
-		color: $color-forms-text;
-
 
 		span {
 			@include icon(down-dir);
@@ -17,7 +15,8 @@
 
 			&:before {
 				position: absolute;
-				right: 3px;
+				width: 1em;
+				right: 0;
 			}
 		}
 

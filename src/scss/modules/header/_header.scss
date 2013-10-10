@@ -21,11 +21,12 @@
 	.title {
 		@include icon(eye);
 		@include grid(6);
+		margin: 0 0 1em 0;
 		font-size: 1em;
 		text-decoration: none;
 
 		&:before {
-			margin: -2px 0 0 0;
+			margin: -0.125em 0 0 0;
 			font-size: 1.5em;
 		}
 	}

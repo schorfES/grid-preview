@@ -9,7 +9,8 @@
 		color: $color-forms-text;
 		text-align: center;
 		background-color: $color-forms-background;
-		border: 1px solid $color-forms-text;
+		background-color: rgba($color-forms-background, 0.5);
+		border: 0;
 
 		&::-webkit-inner-spin-button {
 			display: none;

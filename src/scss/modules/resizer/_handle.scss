@@ -2,6 +2,7 @@
 	a {
 		@include background(linear-gradient($color-forms-background, lighten($color-forms-background, 15%)));
 		@include box-shadow(rgba($color-grid-shadow, 0.5) 0 5px 20px);
+		outline: none;
 		position: absolute;
 		display: block;
 		margin: -5px 0 0 ($resizer-handle-width * -0.5);

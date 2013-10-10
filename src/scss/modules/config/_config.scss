@@ -11,12 +11,9 @@
 
 	label {
 		@include pie-clearfix();
-		@include border-radius(3px);
 		display: block;
 		margin: 0 0 0.25em 0;
 		padding: 3px;
-		color: $color-forms-text;
-		background-color: $color-forms-background;
 	}
 
 	.label,
