@@ -5,6 +5,7 @@ define(function(require) {
 		GridModel = require('application/models/Grid'),
 		GridView = require('application/views/grid/Grid'),
 		ConfigView = require('application/views/config/Config'),
+		ResizerView = require('application/views/resizer/Resizer'),
 
 		Command = function() {}
 	;
@@ -30,7 +31,8 @@ define(function(require) {
 			header = $('.header .content'),
 			settings = this.context.models.grid.toJSON(),
 			gridView,
-			configView
+			configView,
+			resizerView
 		;
 
 		gridView = new GridView({
@@ -45,9 +47,15 @@ define(function(require) {
 			context: this.context
 		}).render();
 
+		resizerView = new ResizerView({
+			el: header,
+			context: this.context
+		}).render();
+
 		this.context.views = {
 			grid: gridView,
-			config: configView
+			config: configView,
+			resizer: resizerView
 		};
 	};
 

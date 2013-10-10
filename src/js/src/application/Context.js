@@ -11,6 +11,7 @@ define(function(require) {
 		initialize: function() {
 			this.mapCommand('application:start', ApplicationStartupCommand);
 			this.mapCommand('config:changed', GridUpdateCommand);
+			this.mapCommand('resizer:change', GridUpdateCommand);
 		}
 
 	});

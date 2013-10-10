@@ -6,7 +6,7 @@ define(function(require) {
 		Template = require('text!application/views/config/Template.html')
 	;
 
-	require('uniform');
+	require('jqueryuniform');
 
 	return Backbone.View.extend({
 

@@ -1,0 +1,27 @@
+.resizer {
+	a {
+		@include background(linear-gradient($color-forms-background, lighten($color-forms-background, 15%)));
+		@include box-shadow(rgba($color-grid-shadow, 0.5) 0 5px 20px);
+		position: absolute;
+		display: block;
+		margin: -5px 0 0 ($resizer-handle-width * -0.5);
+		width: $resizer-handle-width;
+		height: $resizer-handle-height;
+		line-height: 30px;
+		color: $color-forms-text;
+		text-decoration: none;
+		background-color: $color-forms-background;
+	}
+
+	.handle-left a {
+		@include icon(right-dir);
+		@include border-radius(3px 3px 3px ($resizer-handle-width * 0.5));
+		text-align: right;
+	}
+
+	.handle-right a {
+		@include icon(left-dir);
+		@include border-radius(3px 3px ($resizer-handle-width * 0.5) 3px);
+		text-align: left;
+	}
+}

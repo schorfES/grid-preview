@@ -3,8 +3,8 @@
 	require.config({
 		paths: {
 			jquery: '../libs/jquery/jquery',
-			ui: '../libs/jquery/jquery.ui.custom',
-			uniform: '../libs/jquery/jquery.uniform',
+			jqueryui: '../libs/jquery/jquery.ui.custom',
+			jqueryuniform: '../libs/jquery/jquery.uniform',
 			underscore: '../libs/underscore/underscore',
 			backbone: '../libs/backbone/backbone',
 			wreqr: '../libs/backbone/backbone.wreqr',
@@ -18,11 +18,11 @@
 			jquery: {
 				exports: '$'
 			},
-			ui: {
+			jqueryui: {
 				deps: ['jquery'],
 				exports: '$.fn.ui'
 			},
-			uniform: {
+			jqueryuniform: {
 				deps: ['jquery'],
 				exports: '$.fn.uniform'
 			},

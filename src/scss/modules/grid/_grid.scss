@@ -1,8 +1,30 @@
+.grid-container {
+	@include box-shadow(
+		rgba($color-grid-shadow, 0.5) 10px 0 20px,
+		rgba($color-grid-shadow, 0.5) -10px 0 20px
+	);
+	margin: 0 auto;
+	height: 100%;
+	width: 100%;
+	background-image: url("../img/backgrounds/grid.png");
+	background-attachment: fixed;
+	border-left: 1px solid $color-grid-border;
+	border-left: 1px solid rgba($color-grid-border, 0.5);
+	border-right: 1px solid $color-grid-border;
+	border-right: 1px solid rgba($color-grid-border, 0.5);
+
+
+	@include retina() {
+		background-image: url("../img/backgrounds/grid-retina.png");
+		background-size: image-width("../img/backgrounds/grid.png") auto;
+	}
+}
+
 .grid {
 	@include pie-clearfix();
 	@include box-shadow(
-		$color-grid-shadow 10px 0 20px,
-		$color-grid-shadow -10px 0 20px
+		rgba($color-grid-shadow, 0.2) 10px 0 20px,
+		rgba($color-grid-shadow, 0.2) -10px 0 20px
 	);
 	margin: 0 auto;
 	height: 100%;

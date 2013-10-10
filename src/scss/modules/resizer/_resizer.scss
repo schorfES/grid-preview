@@ -1,0 +1,13 @@
+.resizer {
+	position: absolute;
+	left: 0;
+	bottom: 0;
+	width: 100%;
+
+	> div {
+		position: relative;
+		float: left;
+		width: 50%;
+		height: 2px;
+	}
+}

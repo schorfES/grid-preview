@@ -17,12 +17,13 @@ define(function(require) {
 
 		render: function() {
 			this._content = $(this.template()).appendTo(this.$el);
+			this._grid = this._content.find('.grid');
 			this.apply(this.settings, true);
 			return this;
 		},
 
 		clear: function() {
-			this._content
+			this._grid
 				.children()
 				.remove();
 
@@ -33,7 +34,7 @@ define(function(require) {
 			var newSettings = $.extend({}, this.settings, settings);
 
 			if(newSettings.maxWidth !== this.settings.maxWidth || newSettings.maxWidthUnit !== this.settings.maxWidthUnit || force) {
-				this._content.css({
+				this._grid.css({
 					maxWidth: newSettings.maxWidth + newSettings.maxWidthUnit
 				});
 			}
@@ -53,6 +54,12 @@ define(function(require) {
 			this.settings = newSettings;
 		},
 
+		crop: function(width, unit) {
+			this._content.css({
+				maxWidth: width + unit
+			});
+		},
+
 		_createColumns: function(settings) {
 			var
 				styles = {
@@ -67,7 +74,7 @@ define(function(require) {
 
 			for(index = 0; index < settings.columns; index++) {
 				view = new GridColumnView({
-					el: this._content,
+					el: this._grid,
 					styles: styles,
 					index: index
 				}).render();
