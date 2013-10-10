@@ -12,10 +12,10 @@
 		<label for="widthMax">
 			<span class="label">Max Width</span>
 			<div class="input">
-				<input type="number" name="widthMax" value="<%= widthMax %>" />
-				<select name="gutterUnit">
-					<option value="%" <%= (widthMaxUnit === '%') ? 'selected' : '' %>>%</option>
-					<option value="px" <%= (widthMaxUnit === 'px') ? 'selected' : '' %>>px</option>
+				<input type="number" name="maxWidth" value="<%= maxWidth %>" />
+				<select name="maxWidthUnit">
+					<option value="%" <%= (maxWidthUnit === '%') ? 'selected' : '' %>>%</option>
+					<option value="px" <%= (maxWidthUnit === 'px') ? 'selected' : '' %>>px</option>
 				</select>
 			</div>
 		</label>
@@ -28,10 +28,10 @@
 			<span class="label">Width:</span>
 
 			<div class="input">
-				<input type="number" name="gutter" value="<%= gutter %>" />
-				<select name="gutterUnit">
-					<option value="%" <%= (gutterUnit === '%') ? 'selected' : '' %>>%</option>
-					<option value="px" <%= (gutterUnit === 'px') ? 'selected' : '' %>>px</option>
+				<input type="number" name="gutterWidth" value="<%= gutterWidth %>" />
+				<select name="gutterWidthUnit">
+					<option value="%" <%= (gutterWidthUnit === '%') ? 'selected' : '' %>>%</option>
+					<option value="px" <%= (gutterWidthUnit === 'px') ? 'selected' : '' %>>px</option>
 				</select>
 			</div>
 		</label>

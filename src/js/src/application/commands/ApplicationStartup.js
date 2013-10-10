@@ -16,7 +16,7 @@ define(function(require) {
 
 	Command.prototype.createModels = function() {
 		var
-			gridModel = new GridModel();
+			gridModel = new GridModel()
 		;
 
 		this.context.models = {
@@ -35,12 +35,14 @@ define(function(require) {
 
 		gridView = new GridView({
 			el: container,
-			settings: settings
+			settings: settings,
+			context: this.context
 		}).render();
 
 		configView = new ConfigView({
 			el: header,
-			settings: settings
+			settings: settings,
+			context: this.context
 		}).render();
 
 		this.context.views = {

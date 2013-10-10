@@ -22,8 +22,8 @@ define(function(require) {
 			this.$content
 				.css({
 					width: styles.width + styles.widthUnit,
-					paddingLeft: styles.gutterWidth + styles.gutterWidthUnit,
-					paddingRight: styles.gutterWidth + styles.gutterWidthUnit
+					paddingLeft: styles.gutterWidth.toString() + styles.gutterWidthUnit.toString(),
+					paddingRight: styles.gutterWidth.toString() + styles.gutterWidthUnit.toString()
 				});
 
 			return this;

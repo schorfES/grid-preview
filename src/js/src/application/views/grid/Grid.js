@@ -16,13 +16,13 @@ define(function(require) {
 		},
 
 		render: function() {
-			this.$content = $(this.template()).appendTo(this.$el);
+			this._content = $(this.template()).appendTo(this.$el);
 			this.apply(this.settings, true);
 			return this;
 		},
 
 		clear: function() {
-			this.$content
+			this._content
 				.children()
 				.remove();
 
@@ -32,20 +32,20 @@ define(function(require) {
 		apply: function(settings, force) {
 			var newSettings = $.extend({}, this.settings, settings);
 
-			if(newSettings.widthMax !== this.settings.widthMax || newSettings.widthMaxUnit !== this.settings.widthUnit || force) {
-				this.$content.css({
-					maxWidth: newSettings.widthMax + newSettings.widthMaxUnit
+			if(newSettings.maxWidth !== this.settings.maxWidth || newSettings.maxWidthUnit !== this.settings.maxWidthUnit || force) {
+				this._content.css({
+					maxWidth: newSettings.maxWidth + newSettings.maxWidthUnit
 				});
 			}
 
 			if(newSettings.columns !== this.settings.columns || force) {
 				this.clear();
 				this._createColumns(newSettings);
-			} else if( newSettings.gutter !== this.settings.gutter || newSettings.gutterUnit !== this.settings.gutterUnit) {
+			} else if(newSettings.gutterWidth !== this.settings.gutterWidth || newSettings.gutterWidthUnit !== this.settings.gutterWidthUnit) {
 				_.each(this.columnViews, function(view) {
 					view.applyStyles({
-						gutter: newSettings.gutterWidth,
-						gutterUnit: newSettings.gutterWidthUnit
+						gutterWidth: newSettings.gutterWidth,
+						gutterWidthUnit: newSettings.gutterWidthUnit
 					});
 				});
 			}
@@ -67,7 +67,7 @@ define(function(require) {
 
 			for(index = 0; index < settings.columns; index++) {
 				view = new GridColumnView({
-					el: this.$content,
+					el: this._content,
 					styles: styles,
 					index: index
 				}).render();

@@ -9,8 +9,8 @@ define(function(require) {
 			fluid: true,
 			columns: 12,
 			widthUnit: '%',
-			widthMax: 960,
-			widthMaxUnit: 'px',
+			maxWidth: 960,
+			maxWidthUnit: 'px',
 			gutterWidth: 2.4,
 			gutterWidthUnit: '%'
 		}
