@@ -131,6 +131,12 @@ module.exports = function(grunt) {
 						cwd: 'src/fonts/',
 						src: ['*'],
 						dest: 'bin/fonts/'
+					},
+					{
+						expand: true,
+						cwd: 'src/img/',
+						src: ['**'],
+						dest: 'bin/img/'
 					}
 				]
 			}
