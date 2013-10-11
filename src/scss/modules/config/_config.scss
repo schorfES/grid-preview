@@ -33,7 +33,7 @@
 	}
 }
 
-@include grid-break(400px) {
+@include grid-break($grid-break-medium) {
 	.config {
 		fieldset {
 			@include grid($grid-columns / 2);
@@ -42,7 +42,7 @@
 }
 
 
-@include grid-break(700px) {
+@include grid-break($grid-break-large) {
 	.config {
 		fieldset {
 			@include grid($grid-columns / 3);
