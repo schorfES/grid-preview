@@ -1,0 +1,15 @@
+.buttonset {
+	&.metanavigation {
+		@include grid($grid-columns);
+		text-align: right;
+
+		@include grid-break($grid-break-large) {
+			@include grid($grid-columns / 2);
+		}
+
+		/* Buttons */
+		.github a {
+			@include icon(github, after);
+		}
+	}
+}

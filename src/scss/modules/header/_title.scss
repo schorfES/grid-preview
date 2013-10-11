@@ -1,0 +1,18 @@
+.header {
+	.title {
+		@include icon(eye);
+		@include grid($grid-columns);
+		margin: 0 0 1em 0;
+		font-size: 1em;
+		text-decoration: none;
+
+		&:before {
+			margin: -0.125em 0 0 0;
+			font-size: 1.5em;
+		}
+
+		@include grid-break($grid-break-large) {
+			@include grid($grid-columns / 2);
+		}
+	}
+}

@@ -6,6 +6,7 @@ define(function(require) {
 		GridView = require('application/views/grid/Grid'),
 		ConfigView = require('application/views/config/Config'),
 		ResizerView = require('application/views/resizer/Resizer'),
+		ButtonsetView = require('application/views/buttonset/Buttonset'),
 
 		Command = function() {}
 	;
@@ -32,13 +33,36 @@ define(function(require) {
 			settings = this.context.models.grid.toJSON(),
 			gridView,
 			configView,
-			resizerView
+			resizerView,
+			metanavigationView,
+			featuresView
 		;
 
 		gridView = new GridView({
 			el: container,
 			settings: settings,
 			context: this.context
+		}).render();
+
+		metanavigationView = new ButtonsetView({
+			el: header,
+			name: 'metanavigation',
+			context: this.context,
+			buttons: [
+				{
+					name: 'github',
+					label: 'GitHub',
+					title: 'View source on Github',
+					eventName: 'click:github'
+				}
+			]
+		}).render();
+
+		featuresView = new ButtonsetView({
+			el: header,
+			name: 'features',
+			context: this.context,
+			buttons: []
 		}).render();
 
 		configView = new ConfigView({
@@ -55,7 +79,9 @@ define(function(require) {
 		this.context.views = {
 			grid: gridView,
 			config: configView,
-			resizer: resizerView
+			resizer: resizerView,
+			metanavigation: metanavigationView,
+			features: featuresView
 		};
 	};
 

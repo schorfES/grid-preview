@@ -10,8 +10,8 @@ $icons: (up-dir, "\e808"),
 		(download, "\e80b"),
 		(wrench, "\e804");
 
-@mixin icon($name) {
-	&:before {
+@mixin icon($name, $position: before) {
+	&:#{$position} {
 		@include inline-block();
 		width: 1em;
 		font-family: "fontello";
