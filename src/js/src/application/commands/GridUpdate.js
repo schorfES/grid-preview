@@ -28,13 +28,12 @@ define(function(require) {
 		});
 
 		// Crop grid's viewport by given setting from resizer:
-		if(resizerView.getSelectedPercentage() > 0.95) {
+		if (resizerView.getSelectedPercentage() > 0.95) {
 			gridView.crop(100, '%');
 			resizerView.snapToMax();
 		} else {
 			gridView.crop(resizerView.getSelectedWidth(), 'px');
 		}
-
 
 		// Store all values in model and update view:
 		gridModel.set(gridSettings);
@@ -43,8 +42,8 @@ define(function(require) {
 
 	Command.prototype.getValidNumberProperty = function(value, includingZero) {
 		value = parseFloat(value, 10);
-		if(_.isNumber(value) && _.isFinite(value) && !_.isNaN(value)) {
-			if(includingZero && value >= 0 || value > 0) {
+		if (_.isNumber(value) && _.isFinite(value) && !_.isNaN(value)) {
+			if (includingZero && value >= 0 || value > 0) {
 				return value;
 			}
 		} else {
@@ -53,7 +52,7 @@ define(function(require) {
 	};
 
 	Command.prototype.getValidUnitProperty = function(value) {
-		if(_.isString(value) && (value === '%' || value === 'px')) {
+		if (_.isString(value) && (value === '%' || value === 'px')) {
 			return value;
 		} else {
 			return undefined;

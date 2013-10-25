@@ -25,8 +25,8 @@ define(function(require) {
 		getApplication: function(applicationName) {
 
 			// applicationName is required
-			if( typeof applicationName !== 'string' ) {
-				throw('missing "applicationName" in getApplication(applicationName)');
+			if (typeof applicationName !== 'string') {
+				throw new window.Error('missing "applicationName" in getApplication(applicationName)');
 			}
 
 			return new Marionette.Application({

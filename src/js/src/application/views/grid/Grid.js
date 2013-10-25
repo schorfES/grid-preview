@@ -33,16 +33,16 @@ define(function(require) {
 		apply: function(settings, force) {
 			var newSettings = $.extend({}, this.settings, settings);
 
-			if(newSettings.maxWidth !== this.settings.maxWidth || newSettings.maxWidthUnit !== this.settings.maxWidthUnit || force) {
+			if (newSettings.maxWidth !== this.settings.maxWidth || newSettings.maxWidthUnit !== this.settings.maxWidthUnit || force) {
 				this._grid.css({
 					maxWidth: newSettings.maxWidth + newSettings.maxWidthUnit
 				});
 			}
 
-			if(newSettings.columns !== this.settings.columns || force) {
+			if (newSettings.columns !== this.settings.columns || force) {
 				this.clear();
 				this._createColumns(newSettings);
-			} else if(newSettings.gutterWidth !== this.settings.gutterWidth || newSettings.gutterWidthUnit !== this.settings.gutterWidthUnit) {
+			} else if (newSettings.gutterWidth !== this.settings.gutterWidth || newSettings.gutterWidthUnit !== this.settings.gutterWidthUnit) {
 				_.each(this.columnViews, function(view) {
 					view.applyStyles({
 						gutterWidth: newSettings.gutterWidth,
@@ -63,7 +63,7 @@ define(function(require) {
 		_createColumns: function(settings) {
 			var
 				styles = {
-					width: 1/settings.columns * 100,
+					width: 1 / settings.columns * 100,
 					widthUnit: settings.widthUnit,
 					gutterWidth: settings.gutterWidth,
 					gutterWidthUnit: settings.gutterWidthUnit
@@ -72,7 +72,7 @@ define(function(require) {
 				index
 			;
 
-			for(index = 0; index < settings.columns; index++) {
+			for (index = 0; index < settings.columns; index++) {
 				view = new GridColumnView({
 					el: this._grid,
 					styles: styles,

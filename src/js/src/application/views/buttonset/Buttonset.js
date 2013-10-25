@@ -14,7 +14,7 @@ define(function(require) {
 		template: _.template(Template),
 
 		initialize: function() {
-			if(!_.isObject(this.options.context)) {
+			if (!_.isObject(this.options.context)) {
 				throw new window.Error('Missing context for ButtonsetView.');
 			}
 		},
@@ -33,7 +33,7 @@ define(function(require) {
 		},
 
 		_renderButtons: function() {
-			if(!_.isArray(this.options.buttons)) {
+			if (!_.isArray(this.options.buttons)) {
 				throw new window.Error('Provide an array of buttons definitions for ButtonsetView.');
 			}
 
