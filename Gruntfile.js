@@ -35,6 +35,13 @@ module.exports = function(grunt) {
 			}
 		},
 
+		jscs: {
+			main: [
+				'Gruntfile.js',
+				'src/js/src/**/*.js'
+			]
+		},
+
 		requirejs: {
 			build: {
 				options: {
@@ -210,6 +217,7 @@ module.exports = function(grunt) {
 	grunt.loadNpmTasks('grunt-contrib-copy');
 	grunt.loadNpmTasks('grunt-contrib-clean');
 	grunt.loadNpmTasks('grunt-string-replace');
+	grunt.loadNpmTasks("grunt-jscs-checker");
 	grunt.loadNpmTasks('grunt-lintspaces');
 	grunt.loadNpmTasks('grunt-exec');
 	grunt.loadNpmTasks('grunt-git');
@@ -221,6 +229,7 @@ module.exports = function(grunt) {
 
 	grunt.registerTask('validate', [
 		'jshint',
+		'jscs',
 		'lintspaces'
 	]);
 
