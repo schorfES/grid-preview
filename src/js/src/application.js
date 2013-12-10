@@ -54,25 +54,17 @@
 
 	require(
 		[
-			'core/application/ApplicationFactory',
+			'core/application/Application',
 			'application/Context'
 		],
 		initialize
 	);
 
-	function initialize(ApplicationFactory, Context) {
-		var app = ApplicationFactory.getApplication('grid-preview');
-
-		app.addInitializer(function() {
-			app.context = new Context({
-				application: app
-			});
-			app.context.dispatch('application:start');
-		});
-
+	function initialize(Application, Context) {
+		var app = new Application(Context);
 		app.start();
 
-		//Add to global
+		//Add to global name space:
 		window.gridPreview = app;
 	}
 

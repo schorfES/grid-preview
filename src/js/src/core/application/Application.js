@@ -1,6 +1,10 @@
 define(function(require) {
 
-	var Marionette = require('marionette');
+	var
+		$ = require('jquery'),
+		Marionette = require('marionette'),
+		Application
+	;
 
 	Marionette.TemplateCache.prototype.loadTemplate = function(templateId) {
 		// Marionette expects "templateId" to be the ID of a DOM element.
@@ -21,17 +25,22 @@ define(function(require) {
 		return template;
 	};
 
-	return {
-		getApplication: function(applicationName) {
-
-			// applicationName is required
-			if (typeof applicationName !== 'string') {
-				throw new window.Error('missing "applicationName" in getApplication(applicationName)');
-			}
-
-			return new Marionette.Application({
-				name: applicationName
+	Application = function(ContextClass) {
+		if (typeof ContextClass === 'function') {
+			this.context = new ContextClass({
+				application: this
 			});
+		} else {
+			throw new Error('No ContextClass supplied for Application.');
 		}
 	};
+
+	$.extend(Application.prototype, new Marionette.Application(), {
+		start: function() {
+			Marionette.Application.prototype.start.apply(this, arguments);
+			this.context.dispatch('application:start');
+		}
+	});
+
+	return Application;
 });
