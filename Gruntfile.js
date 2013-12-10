@@ -1,9 +1,10 @@
 module.exports = function(grunt) {
 	var
-		pkg = grunt.file.readJSON('package.json')
+		pkg = grunt.file.readJSON('package.json'),
+		merge = require('merge')
 	;
 
-	// project configuration
+	/* tasks configuration */
 	grunt.initConfig({
 		pkg: pkg,
 
@@ -44,68 +45,22 @@ module.exports = function(grunt) {
 
 		requirejs: {
 			build: {
-				options: {
-					baseUrl: '.',
-					appDir: 'src/js/src/', /* source dir */
-					dir: 'bin/js/', /* output dir */
-					modules: [
-						{
-							name: 'application'
-						}
-					],
-					paths: {
-						jquery: '../libs/jquery/jquery',
-						jqueryui: '../libs/jquery/jquery.ui.custom',
-						jqueryuniform: '../libs/jquery/jquery.uniform',
-						underscore: '../libs/underscore/underscore',
-						backbone: '../libs/backbone/backbone',
-						wreqr: '../libs/backbone/backbone.wreqr',
-						babysitter: '../libs/backbone/backbone.babysitter',
-						marionette: '../libs/backbone/backbone.marionette',
-						geppetto: '../libs/backbone/backbone.geppetto',
-						text: '../libs/require/require.text'
+				options: merge(
+					{
+						modules: [
+							{name: 'application'}
+						],
+						baseUrl: '.',
+						appDir: 'src/js/src/', // source dir
+						dir: 'bin/js/', // output dir
+						almond: true, // simple AMD loader for build files
+						findNestedDependencies: true, // allows nested require()-calls which is needed to build with shared requirejs config
+						wrap: true, // to use with the almond option
+						preserveLicenseComments: false,
+						logLevel: 1
 					},
-					shim: {
-						jquery: {
-							exports: '$'
-						},
-						jqueryui: {
-							deps: ['jquery'],
-							exports: '$.fn.ui'
-						},
-						jqueryuniform: {
-							deps: ['jquery'],
-							exports: '$.fn.uniform'
-						},
-						underscore: {
-							exports: '_'
-						},
-						backbone: {
-							deps: ['underscore', 'jquery'],
-							exports: 'Backbone'
-						},
-						wreqr: {
-							deps: ['backbone'],
-							exports: 'Backbone.Wreqr'
-						},
-						babysitter: {
-							deps: ['backbone'],
-							exports: 'Backbone.BabySitter'
-						},
-						marionette: {
-							deps: ['wreqr', 'babysitter'],
-							exports: 'Backbone.Marionette'
-						},
-						geppetto: {
-							deps: ['marionette'],
-							exports: 'Backbone.Geppetto'
-						}
-					},
-					almond: true, /* simple AMD loader for build files */
-					wrap: true, /* to use with the almond option */
-					preserveLicenseComments: false,
-					logLevel: 1
-				}
+					require('src/js/src/_config')
+				)
 			}
 		},
 
@@ -151,11 +106,12 @@ module.exports = function(grunt) {
 
 		clean: {
 			options: {
-				force: true /* delete files outside of current directory */
+				force: true //delete files outside of current directory
 			},
 			build: [
 				'bin/js/core/',
 				'bin/js/application/',
+				'bin/js/_config.js',
 				'bin/js/build.txt'
 			]
 		},
@@ -208,9 +164,9 @@ module.exports = function(grunt) {
 		}
 	});
 
-	// load tasks
-	/* grunt.loadNpmTasks('grunt-contrib-requirejs'); this contrib of
-	* grunt-require.js doesn't support almond.js in build files. */
+	/* load tasks */
+	// grunt.loadNpmTasks('grunt-contrib-requirejs'); this contrib of
+	// grunt-require.js doesn't support almond.js in build files.
 	grunt.loadNpmTasks('grunt-requirejs');
 	grunt.loadNpmTasks('grunt-contrib-jshint');
 	grunt.loadNpmTasks('grunt-contrib-connect');
@@ -222,7 +178,7 @@ module.exports = function(grunt) {
 	grunt.loadNpmTasks('grunt-exec');
 	grunt.loadNpmTasks('grunt-git');
 
-	// define tasks
+	/* define tasks */
 	grunt.registerTask('init', [
 		'gitclone'
 	]);
