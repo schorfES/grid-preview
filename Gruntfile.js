@@ -81,6 +81,10 @@ module.exports = function(grunt) {
 						cwd: 'src/img/',
 						src: ['**'],
 						dest: 'bin/img/'
+					},
+					{
+						src: 'src/js/libs/modernizr/modernizr.js',
+						dest: 'bin/js/modernizr.js'
 					}
 				]
 			}
@@ -108,6 +112,10 @@ module.exports = function(grunt) {
 						{
 							pattern: 'data-main="js/src/application" src="js/libs/require/require.js"',
 							replacement: 'src="js/application.js"'
+						},
+						{
+							pattern: 'src="js/libs/modernizr/modernizr.js"',
+							replacement: 'src="js/modernizr.js"'
 						}
 					]
 				}
@@ -172,8 +180,8 @@ module.exports = function(grunt) {
 	]);
 
 	grunt.registerTask('build', [
-		'copy:build',
 		'requirejs:build',
+		'copy:build',
 		'exec:build',
 		'clean:build',
 		'string-replace:build'
