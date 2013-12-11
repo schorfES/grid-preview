@@ -1,9 +1,9 @@
-#[Grid Preview](http://schorfes.github.io/grid-preview/)
+# [Grid Preview](http://schorfes.github.io/grid-preview/)
 
 A webapp to preview customizable responsive grid layouts. The running version is
 located at [http://schorfes.github.io/grid-preview](http://schorfes.github.io/grid-preview/).
 
-##Features
+## Features
 
 * change amount of columns
 * change max-width
@@ -17,7 +17,28 @@ located at [http://schorfes.github.io/grid-preview](http://schorfes.github.io/gr
 * share your settings as preview on different devices
 * set units in _em_
 
-##License
+## Used Javascript Libraries
+
+### Clientside
+
+* [jQuery](http://jquery.com/)
+* [jQueryUI](http://jqueryui.com/)
+* [jQueryUniform](http://uniformjs.com/)
+* [underscore.js](http://underscorejs.org/)
+* [Backbone.js](http://backbonejs.org/)
+* [Backbone.Marionette.js](http://marionettejs.com/) and Dependencies
+* [Backbone.Geppetto](https://github.com/ModelN/backbone.geppetto/)
+* [Require.js](http://requirejs.org/)
+* [Require.js Text](https://github.com/requirejs/text/)
+* [Modernizr](http://modernizr.com/)
+* [html2canvas](http://html2canvas.hertzen.com/)
+
+### Grunttasks
+
+See [package.json](https://github.com/schorfES/grid-preview/blob/master/package.json)
+for dependencies of all used grunttasks.
+
+## License
 
 [LICENSE (MIT)](LICENSE)
 
