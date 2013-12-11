@@ -10,11 +10,11 @@ located at [http://schorfes.github.io/grid-preview](http://schorfes.github.io/gr
 * change gutter width
 * set units (px / %) of max-width and gutter width
 * resize grid without resizing the browser window
+* download image of defined grid settings
 
 ### future features (todo's)
 
 * share your settings as preview on different devices
-* download image of defined grid settings
 * set units in _em_
 
 ##License
