@@ -11,80 +11,81 @@ define(function(require) {
 		Command = function() {}
 	;
 
-	Command.prototype.execute = function() {
-		this.createModels();
-		this.createViews();
-	};
+	$.extend(Command.prototype, {
+		execute: function() {
+			this.createModels();
+			this.createViews();
+		},
 
-	Command.prototype.createModels = function() {
-		var
-			gridModel = new GridModel()
-		;
+		createModels: function() {
+			var
+				gridModel = new GridModel()
+			;
 
-		this.context.models = {
-			grid: gridModel
-		};
-	};
+			this.context.models = {
+				grid: gridModel
+			};
+		},
 
-	Command.prototype.createViews = function() {
-		var
-			container = $('.container'),
-			header = $('.header .content'),
-			settings = this.context.models.grid.toJSON(),
-			gridView,
-			configView,
-			resizerView,
-			metanavigationView,
-			featuresView
-		;
+		createViews: function() {
+			var
+				container = $('.container'),
+				header = $('.header .content'),
+				settings = this.context.models.grid.toJSON(),
+				gridView,
+				configView,
+				resizerView,
+				metanavigationView,
+				featuresView
+			;
 
-		gridView = new GridView({
-			el: container,
-			settings: settings,
-			context: this.context
-		}).render();
+			gridView = new GridView({
+				el: container,
+				settings: settings,
+				context: this.context
+			}).render();
 
-		metanavigationView = new ButtonsetView({
-			el: header,
-			name: 'metanavigation',
-			context: this.context,
-			buttons: [
-				{
-					name: 'github',
-					label: 'GitHub',
-					title: 'View source on Github',
-					eventName: 'click:github'
-				}
-			]
-		}).render();
+			metanavigationView = new ButtonsetView({
+				el: header,
+				name: 'metanavigation',
+				context: this.context,
+				buttons: [
+					{
+						name: 'github',
+						label: 'GitHub',
+						title: 'View source on Github',
+						eventName: 'click:github'
+					}
+				]
+			}).render();
 
-		featuresView = new ButtonsetView({
-			el: header,
-			name: 'features',
-			context: this.context,
-			buttons: []
-		}).render();
+			featuresView = new ButtonsetView({
+				el: header,
+				name: 'features',
+				context: this.context,
+				buttons: []
+			}).render();
 
-		configView = new ConfigView({
-			el: header,
-			settings: settings,
-			context: this.context
-		}).render();
+			configView = new ConfigView({
+				el: header,
+				settings: settings,
+				context: this.context
+			}).render();
 
-		resizerView = new ResizerView({
-			el: header,
-			context: this.context
-		}).render();
+			resizerView = new ResizerView({
+				el: header,
+				context: this.context
+			}).render();
 
-		this.context.views = {
-			grid: gridView,
-			config: configView,
-			resizer: resizerView,
-			metanavigation: metanavigationView,
-			features: featuresView
-		};
-	};
+			this.context.views = {
+				grid: gridView,
+				config: configView,
+				resizer: resizerView,
+				metanavigation: metanavigationView,
+				features: featuresView
+			};
+		}
+	});
 
 	return Command;
-
 });
