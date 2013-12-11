@@ -9,16 +9,21 @@ define(function(require) {
 
 	$.extend(Command.prototype, {
 		execute: function() {
-			var
-				grid = $('.grid').get(0)
-			;
+			// Test if browser supports canvas-tag:
+			if (window.Modernizr.canvas) {
+				var
+					grid = $('.grid').get(0)
+				;
 
-			if (grid) {
-				// Start rendering the current DOM of the displayed grid
-				// into a canvas element:
-				html2canvas(grid, {
-					onrendered: $.proxy(this._onRendered, this)
-				});
+				if (grid) {
+					// Start rendering the current DOM of the displayed grid
+					// into a canvas element using 'html2canvas' lib:
+					html2canvas(grid, {
+						onrendered: $.proxy(this._onRendered, this)
+					});
+				}
+			} else {
+				window.alert('Sorry, your browser did\'t support this feature.');
 			}
 		},
 
