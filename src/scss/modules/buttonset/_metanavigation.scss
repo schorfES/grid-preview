@@ -9,7 +9,7 @@
 
 		/* Buttons */
 		.github a {
-			@include icon(github, after);
+			@include icon("github", "after");
 		}
 	}
 }

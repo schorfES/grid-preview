@@ -23,6 +23,7 @@ define(function () {
 			babysitter: '../libs/backbone/backbone.babysitter',
 			marionette: '../libs/backbone/backbone.marionette',
 			geppetto: '../libs/backbone/backbone.geppetto',
+			html2canvas: '../libs/html2canvas/html2canvas',
 			text: '../libs/require/require.text'
 		},
 
@@ -60,6 +61,9 @@ define(function () {
 			geppetto: {
 				deps: ['marionette'],
 				exports: 'Backbone.Geppetto'
+			},
+			html2canvas: {
+				exports: 'html2canvas'
 			}
 		}
 	};

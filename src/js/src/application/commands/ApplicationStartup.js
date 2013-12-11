@@ -54,7 +54,7 @@ define(function(require) {
 						name: 'github',
 						label: 'GitHub',
 						title: 'View source on Github',
-						eventName: 'click:github'
+						eventName: 'action:github'
 					}
 				]
 			}).render();
@@ -63,7 +63,14 @@ define(function(require) {
 				el: header,
 				name: 'features',
 				context: this.context,
-				buttons: []
+				buttons: [
+					{
+						name: 'download',
+						label: 'Download',
+						title: 'Download the current grid as image',
+						eventName: 'action:download'
+					}
+				]
 			}).render();
 
 			configView = new ConfigView({

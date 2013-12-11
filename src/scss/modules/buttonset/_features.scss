@@ -1,0 +1,11 @@
+.buttonset {
+	&.features {
+		@include grid($grid-columns);
+		text-align: right;
+
+		/* Buttons */
+		.download a {
+			@include icon("download", "after");
+		}
+	}
+}

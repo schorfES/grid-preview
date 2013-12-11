@@ -4,7 +4,8 @@ define(function(require) {
 		Geppetto = require('geppetto'),
 		ApplicationStartupCommand = require('application/commands/ApplicationStartup'),
 		GridUpdateCommand = require('application/commands/GridUpdate'),
-		ActionGithubCommand = require('application/commands/ActionGithub')
+		ActionGithubCommand = require('application/commands/ActionGithub'),
+		ActionDownloadCommand = require('application/commands/ActionDownload')
 	;
 
 	return Geppetto.Context.extend({
@@ -15,7 +16,8 @@ define(function(require) {
 			this.mapCommand('resizer:change', GridUpdateCommand);
 
 			//Button Commands:
-			this.mapCommand('click:github', ActionGithubCommand);
+			this.mapCommand('action:github', ActionGithubCommand);
+			this.mapCommand('action:download', ActionDownloadCommand);
 		}
 
 	});
