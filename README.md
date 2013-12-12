@@ -32,6 +32,7 @@ located at [http://schorfes.github.io/grid-preview](http://schorfes.github.io/gr
 * [Require.js Text](https://github.com/requirejs/text/)
 * [Modernizr](http://modernizr.com/)
 * [html2canvas](http://html2canvas.hertzen.com/)
+* [spark-md5](https://github.com/satazor/SparkMD5)
 
 ### Grunttasks
 
