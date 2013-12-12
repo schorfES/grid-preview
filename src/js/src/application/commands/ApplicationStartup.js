@@ -19,8 +19,13 @@ define(function(require) {
 
 		createModels: function() {
 			var
-				gridModel = new GridModel()
+				gridModel = new GridModel(),
+				hash = window.location.hash
 			;
+
+			if (typeof hash === 'string' && hash.length > 1) {
+				gridModel.decode(hash.substring(1));
+			}
 
 			this.context.models = {
 				grid: gridModel

@@ -24,6 +24,7 @@ define(function () {
 			marionette: '../libs/backbone/backbone.marionette',
 			geppetto: '../libs/backbone/backbone.geppetto',
 			html2canvas: '../libs/html2canvas/html2canvas',
+			sparkmd5: '../libs/spark-md5/spark-md5',
 			text: '../libs/require/require.text'
 		},
 
@@ -64,6 +65,9 @@ define(function () {
 			},
 			html2canvas: {
 				exports: 'html2canvas'
+			},
+			json: {
+				exports: 'JSON'
 			}
 		}
 	};

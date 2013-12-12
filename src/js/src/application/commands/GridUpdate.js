@@ -17,16 +17,18 @@ define(function(require) {
 				resizerView = this.context.views.resizer
 			;
 
+			this._gridModel = gridModel;
+
 			/* There is a difference between $.extend and _.extend. _.extend also
 			/* copies properties with value 'undefined' into destination object
 			/* which we don't want in this case. */
 			// Clone values from ConfigView:
 			$.extend(gridSettings, {
-				columns: this.getValidNumberProperty(configView.getColumns()),
-				maxWidth: this.getValidNumberProperty(configView.getMaxWidth()),
-				maxWidthUnit: this.getValidUnitProperty(configView.getMaxWidthUnit()),
-				gutterWidth: this.getValidNumberProperty(configView.getGutterWidth(), true),
-				gutterWidthUnit: this.getValidUnitProperty(configView.getGutterWidthUnit())
+				columns: this._getValidNumberProperty(configView.getColumns()),
+				maxWidth: this._getValidNumberProperty(configView.getMaxWidth()),
+				maxWidthUnit: this._getValidUnitProperty(configView.getMaxWidthUnit()),
+				gutterWidth: this._getValidNumberProperty(configView.getGutterWidth(), true),
+				gutterWidthUnit: this._getValidUnitProperty(configView.getGutterWidthUnit())
 			});
 
 			// Crop grid's viewport by given setting from resizer:
@@ -40,9 +42,12 @@ define(function(require) {
 			// Store all values in model and update view:
 			gridModel.set(gridSettings);
 			gridView.apply(gridSettings);
+
+			// Update location hash for url sharing:
+			this._updateHash();
 		},
 
-		getValidNumberProperty: function(value, includingZero) {
+		_getValidNumberProperty: function(value, includingZero) {
 			value = parseFloat(value, 10);
 			if (_.isNumber(value) && _.isFinite(value) && !_.isNaN(value)) {
 				if (includingZero && value >= 0 || value > 0) {
@@ -53,12 +58,16 @@ define(function(require) {
 			}
 		},
 
-		getValidUnitProperty: function(value) {
+		_getValidUnitProperty: function(value) {
 			if (_.isString(value) && (value === '%' || value === 'px')) {
 				return value;
 			} else {
 				return undefined;
 			}
+		},
+
+		_updateHash: function() {
+			window.location.hash = this._gridModel.encode();
 		}
 	});
 
