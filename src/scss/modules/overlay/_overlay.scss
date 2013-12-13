@@ -1,0 +1,105 @@
+.overlay {
+	z-index: $zindex-overlay;
+	position: absolute;
+	display: none;
+	top: 0;
+	left: -100%;
+	width: 100%;
+	height: 100%;
+	text-align: center;
+	background: $color-header-background;
+	background: rgba($color-header-background, 0.7);
+
+	/* Open / Close */
+	.csstransitions & {
+		@include transition(opacity 0.5s, left 0s 0.5s);
+		@include opacity(0.0);
+		display: block;
+	}
+
+	&.open {
+		@include transition(opacity 0.5s);
+		@include opacity(1.0);
+		display: block;
+		left: 0;
+	}
+
+
+	/* Show / Hide content feature */
+	> div {
+		@include border-radius(3px);
+		position: relative;
+		display: none;
+		padding: 1em;
+		width: 100%;
+		max-width: $grid-break-medium;
+		background: $color-header-background;
+		background: rgba($color-header-background, 0.7);
+		border-bottom: 1px solid $color-header-border;
+		border-bottom: 1px solid rgba($color-header-border, 0.2);
+
+		.csstransitions & {
+			@include transition(opacity 0.5s);
+			@include inline-block();
+			@include opacity(0.0);
+		}
+	}
+
+	&.visible {
+		> div {
+			@include opacity(1.0);
+			@include inline-block();
+		}
+	}
+
+	/* Loading feature */
+	&:after {
+		@include border-radius(3px);
+		@include transition(opacity 0.5s, left 0s 0.5s);
+		@include opacity(0.0);
+		content: "Loading...";
+		z-index: $zindex-overlay-loading;
+		position: absolute;
+		display: block;
+		padding: 1em;
+		top: 50%;
+		left: -100%;
+		width: 10em;
+		margin-left: -5em;
+		background: $color-header-background;
+		background: rgba($color-header-background, 0.7);
+		border-bottom: 1px solid $color-header-border;
+		border-bottom: 1px solid rgba($color-header-border, 0.2);
+	}
+
+	&.loading:after {
+		@include transition(opacity 0.5s);
+		@include opacity(1.0);
+		left: 50%;
+	}
+
+	/* Closebutton */
+	.close {
+		@include border-radius(3px 0 0 3px);
+		@include background(linear-gradient($color-forms-background, lighten($color-forms-background, 15%)));
+		@include box-shadow(rgba($color-grid-shadow, 0.5) 0 5px 20px);
+		@include icon("cancel");
+		position: absolute;
+		display: block;
+		top: -0.25em;
+		right: 0;
+		padding: 0.25em;
+		color: $color-forms-text;
+		text-decoration: none;
+		background-color: $color-forms-background;
+
+		@include grid-break($grid-break-medium) {
+			@include border-radius(3px);
+			right: -0.25em;
+		}
+
+		span {
+			display: none;
+		}
+	}
+}

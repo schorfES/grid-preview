@@ -5,7 +5,8 @@ define(function(require) {
 		ApplicationStartupCommand = require('application/commands/ApplicationStartup'),
 		GridUpdateCommand = require('application/commands/GridUpdate'),
 		ActionGithubCommand = require('application/commands/ActionGithub'),
-		ActionDownloadCommand = require('application/commands/ActionDownload')
+		ActionDownloadCommand = require('application/commands/ActionDownload'),
+		ActionShareUrlCommand = require('application/commands/ActionShareUrl')
 	;
 
 	return Geppetto.Context.extend({
@@ -18,6 +19,7 @@ define(function(require) {
 			//Button Commands:
 			this.mapCommand('action:github', ActionGithubCommand);
 			this.mapCommand('action:download', ActionDownloadCommand);
+			this.mapCommand('action:shareurl', ActionShareUrlCommand);
 		}
 
 	});

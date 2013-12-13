@@ -7,5 +7,9 @@
 		.download a {
 			@include icon("download", "after");
 		}
+
+		.share a {
+			@include icon("export", "after");
+		}
 	}
 }

@@ -74,6 +74,12 @@ define(function(require) {
 						label: 'Download',
 						title: 'Download the current grid as image',
 						eventName: 'action:download'
+					},
+					{
+						name: 'share',
+						label: 'Share',
+						title: 'Share the current grid configuration',
+						eventName: 'action:shareurl'
 					}
 				]
 			}).render();
